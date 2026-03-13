@@ -37,7 +37,7 @@ async def scheduler():
         now = datetime.now()
         today = now.date()
 
-        if now.hour == 12 and now.minute == 59 and last_sent_date != today:
+        if now.hour == 13 and now.minute == 11 and last_sent_date != today:
             channel = await client.fetch_channel(CHANNEL_ID)
 
             gif = random.choice(GIFS)
