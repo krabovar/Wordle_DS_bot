@@ -4,8 +4,9 @@ import os
 import random
 from datetime import datetime
 
-TOKEN = os.getenv("TOKEN")  
-CHANNEL_ID = 536620023326965764 
+TOKEN = os.getenv("TOKEN")
+CHANNEL_ID = 536620023326965764
+
 GIFS = [
     "https://tenor.com/tPOPFXrjLjm.gif",
     "https://tenor.com/bPmJh.gif",
@@ -37,15 +38,17 @@ async def scheduler():
         today = now.date()
 
         if now.hour == 12 and now.minute == 59 and last_sent_date != today:
-            channel = client.get_channel(CHANNEL_ID)
+            channel = await client.fetch_channel(CHANNEL_ID)
 
-            if channel is not None:
-                gif = random.choice(GIFS)
-                await channel.send(f"{MESSAGE}\n{gif}")
-                last_sent_date = today
-                print("Message sent")
-            else:
-                print("Channel not found")
+            gif = random.choice(GIFS)
+
+            embed = discord.Embed(description=MESSAGE)
+            embed.set_image(url=gif)
+
+            await channel.send(embed=embed)
+
+            last_sent_date = today
+            print("Message sent")
 
             await asyncio.sleep(60)
 
