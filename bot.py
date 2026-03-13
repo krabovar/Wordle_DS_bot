@@ -37,18 +37,20 @@ async def scheduler():
         now = datetime.now()
         today = now.date()
 
-        if now.hour == 13 and now.minute == 11 and last_sent_date != today:
-            channel = await client.fetch_channel(CHANNEL_ID)
+        if now.hour == 13 and now.minute == 20 and last_sent_date != today:
+            channel = client.get_channel(CHANNEL_ID)
 
-            gif = random.choice(GIFS)
+            if channel is not None:
+                gif = random.choice(GIFS)
 
-            embed = discord.Embed(description=MESSAGE)
-            embed.set_image(url=gif)
+                await channel.send(MESSAGE)
+                await channel.send(gif)
 
-            await channel.send(embed=embed)
+                last_sent_date = today
+                print("Message sent")
 
-            last_sent_date = today
-            print("Message sent")
+            else:
+                print("Channel not found")
 
             await asyncio.sleep(60)
 
