@@ -5,7 +5,7 @@ import random
 from datetime import datetime
 
 TOKEN = os.getenv("TOKEN")
-CHANNEL_ID = 536620023326965764
+CHANNEL_ID = 1465648809966174240
 
 GIFS = [
     "https://tenor.com/tPOPFXrjLjm.gif",
@@ -37,7 +37,7 @@ async def scheduler():
         now = datetime.now()
         today = now.date()
 
-        if now.hour == 13 and now.minute == 20 and last_sent_date != today:
+        if now.hour == 23 and now.minute == 55 and last_sent_date != today:
             channel = client.get_channel(CHANNEL_ID)
 
             if channel is not None:
