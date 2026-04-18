@@ -22,7 +22,7 @@ GIFS = [
     "https://tenor.com/hC438wGCHDn.gif"
 ]
 
-MESSAGE = "WORDLE IN 5!!!!!! :D"
+MESSAGE = "WORDLE IN 5!!!!!!  :D"
 
 intents = discord.Intents.default()
 client = discord.Client(intents=intents)
