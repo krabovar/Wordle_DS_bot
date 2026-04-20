@@ -37,7 +37,7 @@ async def scheduler():
         now = datetime.now()
         today = now.date()
 
-        if now.hour == 23 and now.minute == 55 and last_sent_date != today:
+        if now.hour == 22 and now.minute == 55 and last_sent_date != today:
             channel = client.get_channel(CHANNEL_ID)
 
             if channel is not None:
